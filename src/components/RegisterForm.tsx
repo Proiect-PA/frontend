@@ -63,7 +63,7 @@ export default function RegisterForm() {
             </Form.Item>
 
             <Form.Item name="remember" valuePropName="checked" wrapperCol={{span: 25}}>
-                <Checkbox>Remember me</Checkbox>
+                <Checkbox className="text-slate-200">Remember me</Checkbox>
             </Form.Item>
 
             <Form.Item wrapperCol={{span: 25}}>
@@ -72,7 +72,7 @@ export default function RegisterForm() {
                 </Button>
             </Form.Item>
             <Form.Item wrapperCol={{span: 25}}>
-                <p>Already have an account? <Link to="/login"> Log in </Link></p>
+                <p className="text-slate-200">Already have an account? <Link to="/login" className="hover:font-bold"> Log in </Link></p>
             </Form.Item>
         </Form>
     )

@@ -1,7 +1,7 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch, faHome} from "@fortawesome/free-solid-svg-icons";
-import React from "react";
-import {Dropdown, MenuProps} from "antd";
+import React, {useState} from "react";
+import {Dropdown, MenuProps, Input, Button} from "antd";
 import {Link} from "react-router-dom";
 
 const items: MenuProps['items'] = [
@@ -22,13 +22,32 @@ const items: MenuProps['items'] = [
 
 export default function Navbar() {
 
+    const [searchable, setSearchable] = useState<boolean>(false)
+
     return (<>
-            <div className="flex flex-row items-center m-5">
+            <div className="flex flex-row items-center p-5">
                 <div>
-                    <FontAwesomeIcon icon={faHome}/>
+                    <Link to={"/"}>
+                        <FontAwesomeIcon icon={faHome} className="cursor-pointer ml-5"/>
+                    </Link>
                 </div>
                 <div>
-                    <FontAwesomeIcon icon={faSearch}/>
+                    <FontAwesomeIcon icon={faSearch} className="cursor-pointer ml-5"
+                                     onClick={() => setSearchable(!searchable)}
+                    />
+                </div>
+                <div className="w-1/3">
+                    {
+                        searchable ?
+                            <div className="flex flex-row">
+                            <Input className="ml-5 mr-3 bg-gray-800 text-slate-200 placeholder-slate-400 w-1/1"
+                                   placeholder="Search a track, an album, an artist or whatever you want"/>
+                                <Button className="text-slate-200">
+                                    Search
+                                </Button>
+                            </div>
+                            : ""
+                    }
                 </div>
                 <div
                     className="justify-self-end ml-auto">

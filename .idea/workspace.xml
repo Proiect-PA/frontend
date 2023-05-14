@@ -5,30 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="79d2b440-1a69-459d-b200-7b42e923246c" name="Changes" comment="login, register, dropdown user menu, navbar [start], home [start]">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/LoginForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProfileComponents/Artist.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProfileComponents/Track.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RegisterForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/NotFound.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Profile.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Register.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/reportWebVitals.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/router.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Types.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProfileComponents/Artist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileComponents/Artist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProfileComponents/Track.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfileComponents/Track.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Register.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683985552657</updated>
-      <workItem from="1683985553769" duration="13140000" />
+      <workItem from="1683985553769" duration="18051000" />
     </task>
     <task id="LOCAL-00001" summary="update to tsx">
       <created>1683985935901</created>
@@ -100,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683985935901</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="login, register, dropdown user menu, navbar [start], home [start]">
+      <created>1684010539469</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684010539469</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
