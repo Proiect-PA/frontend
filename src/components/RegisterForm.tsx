@@ -5,6 +5,7 @@ import {useState} from "react";
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEnvelope, faLock, faUser} from "@fortawesome/free-solid-svg-icons"
+import axios from "axios";
 
 export default function RegisterForm() {
 
@@ -12,16 +13,35 @@ export default function RegisterForm() {
     const [lastname, setLastname] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("")
 
     const navigator = useNavigate()
 
-    function login() {
+    function register() {
         const userCredentials = {
             email,
-            password
+            password,
+            firstname,
+            lastname,
+            username
         }
-        // console.log(userCredentials)
-        navigator("/")
+
+        console.log(userCredentials)
+
+        axios
+            .post("http://localhost:8080/api/auth/register",
+                userCredentials,
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            )
+            .then((res) => {
+                console.log(res)
+            })
+
+        navigator("/login")
     }
 
     return (
@@ -55,6 +75,14 @@ export default function RegisterForm() {
             </Form.Item>
 
             <Form.Item
+                name="username"
+                rules={[{required: true, message: 'Please input your email!'}]}
+            >
+                <Input onChange={(e) => setUsername(e.target.value)} placeholder="Username"
+                       prefix={<FontAwesomeIcon icon={faEnvelope}/>}/>
+            </Form.Item>
+
+            <Form.Item
                 name="password"
                 rules={[{required: true, message: 'Please input your password!'}]}
             >
@@ -67,12 +95,14 @@ export default function RegisterForm() {
             </Form.Item>
 
             <Form.Item wrapperCol={{span: 25}}>
-                <Button type="primary" htmlType="submit" onClick={login} className="bg-blue-200">
+                <Button type="primary" htmlType="submit" onClick={register} className="bg-blue-200">
                     Register
                 </Button>
             </Form.Item>
             <Form.Item wrapperCol={{span: 25}}>
-                <p className="text-slate-200">Already have an account? <Link to="/login" className="hover:font-bold"> Log in </Link></p>
+                <p className="text-slate-200">Already have an account? <Link to="/login"
+                                                                             className="hover:font-bold"> Log in </Link>
+                </p>
             </Form.Item>
         </Form>
     )

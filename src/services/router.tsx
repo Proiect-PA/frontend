@@ -3,11 +3,12 @@ import {
     createBrowserRouter,
 } from "react-router-dom";
 
-import Home from "../pages/Home";
+import Trends from "../pages/Trends";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
+import Home from "../pages/Home";
 
 export const router = createBrowserRouter([
     {
@@ -15,8 +16,8 @@ export const router = createBrowserRouter([
       element: <NotFound />
     },
     {
-        path: "/home",
-        element: <Home />
+        path: "/trends",
+        element: <Trends />
     },
     {
         path: "/",

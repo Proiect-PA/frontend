@@ -1,10 +1,10 @@
-import {Form, Input, Checkbox, Button, Image} from "antd";
+import {Form, Input, Checkbox, Button} from "antd";
 import {Link} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
-import {credentials} from "../utils/Types";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faLock} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 export default function LoginForm() {
 
@@ -18,6 +18,11 @@ export default function LoginForm() {
             email,
             password
         }
+
+        axios
+            .post("http://localhost:8080/api/auth/login", userCredentials)
+            .then((res) => console.log(res))
+
         // console.log(userCredentials)
         navigator("/")
     }
