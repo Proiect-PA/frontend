@@ -7,7 +7,7 @@ import {colorBgCardTop, colorBgCardTopHover} from "../utils/Utils";
 
 export default function Artist(artistProps: artistType) {
 
-    return(
+    return (
         <Card hoverable className={`hover:bg-[${colorBgCardTopHover}] 
         border-0 text-slate-200 ml-5 mt-3 cursor-pointer text-center`}>
             <img
@@ -16,7 +16,12 @@ export default function Artist(artistProps: artistType) {
                 width={50}
                 className="m-auto"
             />
-            <p className="font-bold mt-1">{artistProps.name}</p>
+            <p className="font-bold mt-1">
+                {
+                    artistProps.name.length > 20 ? artistProps.name.slice(0, 20) + "..." :
+                        artistProps.name
+                }
+            </p>
             <FontAwesomeIcon
                 icon={faHeart}
                 className="hover:text-red-500"

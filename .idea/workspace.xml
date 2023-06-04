@@ -4,27 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="79d2b440-1a69-459d-b200-7b42e923246c" name="Changes" comment="styling profile page, navbar, login, register">
-      <change afterPath="$PROJECT_DIR$/src/components/AlbumsLibrary.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ArtistsLibrary.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Trends.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/Utils.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProfileComponents/Artist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Artist.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProfileComponents/Library.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProfileComponents/Track.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Track.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegisterForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/router.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Types.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Types.tsx" afterDir="false" />
+    <list default="true" id="79d2b440-1a69-459d-b200-7b42e923246c" name="Changes" comment="adding home page, styling profile page and trends and adding enhance functionality">
+      <change beforePath="$PROJECT_DIR$/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +96,7 @@
       <workItem from="1685714863849" duration="10135000" />
       <workItem from="1685820003348" duration="4307000" />
       <workItem from="1685826236549" duration="8454000" />
+      <workItem from="1685884636498" duration="587000" />
     </task>
     <task id="LOCAL-00001" summary="update to tsx">
       <created>1683985935901</created>
@@ -137,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684036645987</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="adding home page, styling profile page and trends and adding enhance functionality">
+      <created>1685884771841</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1685884771841</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +147,7 @@
     <MESSAGE value="update to tsx" />
     <MESSAGE value="login, register, dropdown user menu, navbar [start], home [start]" />
     <MESSAGE value="styling profile page, navbar, login, register" />
-    <option name="LAST_COMMIT_MESSAGE" value="styling profile page, navbar, login, register" />
+    <MESSAGE value="adding home page, styling profile page and trends and adding enhance functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding home page, styling profile page and trends and adding enhance functionality" />
   </component>
 </project>

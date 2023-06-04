@@ -1,12 +1,12 @@
-import {albumType} from "../utils/Types";
-import {faHeart} from "@fortawesome/free-solid-svg-icons";
+import {albumType, enhancedType} from "../utils/Types";
+import {faHeart, faStar} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {handleLove} from "../utils/Functions";
 import {colorBgCardTop, colorBgCardTopHover} from "../utils/Utils";
 import {Card} from "antd";
 
 
-export default function Album(albumProps: albumType) {
+export default function Album(albumProps: albumType & enhancedType) {
     return (
         <Card hoverable className={`hover:bg-[${colorBgCardTopHover}]
         border-0 mt-5 flex flex-row shadow-slate-50 font-xs cursor-pointer p-5 rounded
@@ -18,10 +18,16 @@ export default function Album(albumProps: albumType) {
             />
             <div className="flex flex-col ml-3 mt-1">
                 <p>
-                    {albumProps.title}
+                    {
+                        albumProps.title.length > 20 ? albumProps.title.slice(0, 20) + "..." :
+                            albumProps.title
+                    }
                 </p>
                 <p>
-                    {albumProps.artist.name}
+                    {
+                        albumProps.artist.name.length > 20 ? albumProps.artist.name.slice(0, 20) + "..." :
+                            albumProps.artist.name
+                    }
                 </p>
 
                 {
@@ -37,6 +43,9 @@ export default function Album(albumProps: albumType) {
                 icon={faHeart}
                 className="hover:text-red-500"
                 onClick={() => handleLove("album", albumProps)}/>
+            {
+                albumProps.enhanced === true && <FontAwesomeIcon icon={faStar}/>
+            }
         </Card>
     )
 }

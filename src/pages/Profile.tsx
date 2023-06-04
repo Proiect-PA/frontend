@@ -15,7 +15,7 @@ const {Content} = Layout;
 export default function Profile() {
     const [artists, setArtists] = useState<artistType[]>([])
     const [tracks, setTracks] = useState<(enhancedType & trackType)[]>([])
-    const [albums, setAlbums] = useState<albumType[]>([])
+    const [albums, setAlbums] = useState<(albumType & enhancedType)[]>([])
 
     const [username, setUsername] = useState<string>("username")
     const [editUsername, setEditUsername] = useState<boolean>(false)
@@ -85,7 +85,7 @@ export default function Profile() {
                 setTracks(newTracks)
             })
 
-        console.log(tracks)
+
     }
 
     const handleEnhanceAlbums = () => {
@@ -106,6 +106,8 @@ export default function Profile() {
                         val.genres === newData[i].genres) === undefined)
                         newAlbums.push(newData[i])
                 }
+
+                setAlbums(newAlbums)
             })
     }
 

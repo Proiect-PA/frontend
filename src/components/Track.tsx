@@ -17,10 +17,16 @@ export default function Track(trackProps: trackType & enhancedType) {
             />
             <div className="flex flex-col ml-3 mt-1 ">
                 <p>
-                    {trackProps.name}
+                    {
+                        trackProps.name.length > 20 ? trackProps.name.slice(0, 20) + "..."
+                            : trackProps.name
+                    }
                 </p>
                 <p>
-                    {trackProps.album.artist.name}
+                    {
+                        trackProps.album.artist.name.length > 20 ? trackProps.album.artist.name.slice(0, 20) + "..."
+                            : trackProps.album.artist.name
+                    }
                 </p>
             </div>
             <FontAwesomeIcon

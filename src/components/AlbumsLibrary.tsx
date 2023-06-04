@@ -1,16 +1,16 @@
 import Album from "./Album";
 import {v4} from 'uuid'
-import {albumType} from "../utils/Types";
+import {albumType, enhancedType} from "../utils/Types";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faArrowUp, faArrowDown} from '@fortawesome/free-solid-svg-icons'
 import {useState} from "react";
 import {Button} from "antd";
 import {colorLayoutOnTop} from "../utils/Utils";
 
-export default function AlbumsLibrary({albums}: { albums: albumType[] }) {
+export default function AlbumsLibrary({albums}: { albums: (albumType & enhancedType)[] }) {
 
     const [indexStart, setIndexStart] = useState<number>(0)
-    const [indexEnd, setIndexEnd] = useState<number>(4)
+    const [indexEnd, setIndexEnd] = useState<number>(2)
 
     return (
         <div className={`flex bg-[${colorLayoutOnTop}] flex-col p-5 w-1/1 min-h-full text-center`}>
@@ -25,7 +25,7 @@ export default function AlbumsLibrary({albums}: { albums: albumType[] }) {
             {
                 albums.length !== 0 ? (
                     albums.slice(indexStart, indexEnd).map((album) => {
-                        return <Album key={v4()} title={album.title} artist={album.artist} genres={album.genres}/>
+                        return <Album key={v4()} title={album.title} artist={album.artist} genres={album.genres} enhanced={album.enhanced}/>
                     })) : (<div> No albums found</div>)
             }
 
