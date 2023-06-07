@@ -2,8 +2,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch, faHome} from "@fortawesome/free-solid-svg-icons";
 import React, {useState} from "react";
 import {Dropdown, MenuProps, Input, Button} from "antd";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {colorBgCardTop} from "../utils/Utils";
+import axios from "axios";
+import {setSearchedResults} from "../services/router";
+import userPfp from "../img/userPfp.png"
 
 const items: MenuProps['items'] = [
     {
@@ -25,6 +28,18 @@ export default function Navbar() {
     const [searchable, setSearchable] = useState<boolean>(false)
     const [searchInput, setSearchInput] = useState<string>("")
 
+    const navigate = useNavigate()
+
+    const handleSearchMusic = () => {
+        axios.post("http://localhost:8080/api/music/search", {searchInput: searchInput})
+            .then(res => res.data)
+            .then(data => {
+                setSearchedResults(data)
+                navigate("/searched")
+            })
+
+    }
+
     return (<>
             <div className="flex flex-row items-center p-5 bg-[#151c26]">
                 <div>
@@ -41,11 +56,16 @@ export default function Navbar() {
                     {
                         searchable ?
                             <div className="flex flex-row">
-                                <Input className={`ml-5 border-0 mr-3 bg-[${colorBgCardTop}] text-white font-semibold placeholder-white w-1/1`}
-                                       placeholder="Search a track, an album, an artist or whatever you want"
-                                       onChange={(e) => setSearchInput(e.target.value)}
+                                <Input
+                                    className={`ml-5 border-0 mr-3 bg-[${colorBgCardTop}] text-white font-semibold placeholder-white w-1/1`}
+                                    placeholder="Search a track, an album, an artist or whatever you want"
+                                    onChange={(e) => {
+                                        setSearchInput(e.target.value)
+                                    }}
                                 />
-                                <Button type="primary" className={`bg-[${colorBgCardTop}] text-white`}>
+                                <Button type="primary"
+                                        className={`bg-[${colorBgCardTop}] text-white`}
+                                        onClick={handleSearchMusic}>
                                     Search
                                 </Button>
                             </div>
@@ -57,7 +77,7 @@ export default function Navbar() {
 
                     <Dropdown menu={{items}} placement="bottomLeft" arrow>
                         <img
-                            src="../../user.png"
+                            src={userPfp}
                             alt="User's profile picture"
                             width={30}
                             className="cursor-pointer"

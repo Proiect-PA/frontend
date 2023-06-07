@@ -10,7 +10,7 @@ import {colorLayoutOnTop} from "../utils/Utils";
 export default function AlbumsLibrary({albums}: { albums: (albumType & enhancedType)[] }) {
 
     const [indexStart, setIndexStart] = useState<number>(0)
-    const [indexEnd, setIndexEnd] = useState<number>(2)
+    const [indexEnd, setIndexEnd] = useState<number>(3)
 
     return (
         <div className={`flex bg-[${colorLayoutOnTop}] flex-col p-5 w-1/1 min-h-full text-center`}>
@@ -18,21 +18,21 @@ export default function AlbumsLibrary({albums}: { albums: (albumType & enhancedT
 
             <Button onClick={() => {
                 setIndexStart((last) => last !== 0 ? last - 1 : last)
-                setIndexEnd((last) => last !== 7 ? last - 1 : last)
+                setIndexEnd((last) => last !== 3 ? last - 1 : last)
             }}>
                 <FontAwesomeIcon icon={faArrowUp} className="cursor-pointer"/>
             </Button>
             {
                 albums.length !== 0 ? (
                     albums.slice(indexStart, indexEnd).map((album) => {
-                        return <Album key={v4()} title={album.title} artist={album.artist} genres={album.genres} enhanced={album.enhanced}/>
+                        return <Album key={v4()} title={album.title} artist={album.artist} genre={album.genre} enhanced={album.enhanced} id={album.id}/>
                     })) : (<div> No albums found</div>)
             }
 
             <Button
                 className="mt-5"
                 onClick={() => {
-                setIndexStart((last) => last + 1)
+                setIndexStart((last) => indexEnd - last >= 3 ? last + 1 : last)
                 setIndexEnd((last) => last !== albums.length - 1 ? last + 1 : last)
             }}>
                 <FontAwesomeIcon icon={faArrowDown} className="cursor-pointer"/>

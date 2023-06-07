@@ -1,4 +1,3 @@
-
 export type FormFields = {
     label: string;
     valueType: string;
@@ -29,23 +28,28 @@ export type enhancedType = {
 }
 
 export type artistType = {
+    id: string;
     name: string;
 }
 
-export type genreType ={
+export type genreType = {
     name: string;
 }
 
 
-export type trackType ={
+export type trackType = {
+
+    id: string;
     name: string;
     album: albumType;
 }
 
-export type albumType ={
+export type albumType = {
+
+    id: string;
     title: string;
     artist: artistType;
-    genres: genreType[];
+    genre: genreType;
 }
 
 

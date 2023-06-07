@@ -90,12 +90,8 @@ export default function RegisterForm() {
                                 prefix={<FontAwesomeIcon icon={faLock}/>}/>
             </Form.Item>
 
-            <Form.Item name="remember" valuePropName="checked" wrapperCol={{span: 25}}>
-                <Checkbox className="text-slate-200">Remember me</Checkbox>
-            </Form.Item>
-
             <Form.Item wrapperCol={{span: 25}}>
-                <Button type="primary" htmlType="submit" onClick={register} className="bg-blue-200">
+                <Button type="primary" htmlType="submit" onClick={register}>
                     Register
                 </Button>
             </Form.Item>

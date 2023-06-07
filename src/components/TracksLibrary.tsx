@@ -22,21 +22,21 @@ export default function TracksLibrary({tracks} : {tracks: (trackType & enhancedT
             <div className="flex flex-row w-1/1 min-h-full items-center text-center">
                 <Button onClick={() => {
                     setIndexStart((last) => last !== 0 ? last - 1 : last)
-                    setIndexEnd((last) => last !== 7 ? last - 1 : last)
+                    setIndexEnd((last) => last !== 4 ? last - 1 : last)
                 }}>
                     <FontAwesomeIcon icon={faArrowLeft} className="cursor-pointer"/>
                 </Button>
                 {
                     tracksArray.length !== 0 ? (
                         tracksArray.slice(indexStart, indexEnd).map((track) => {
-                            return <Track key={v4()} name={track.name} album={track.album} enhanced={track.enhanced}/>
+                            return <Track key={v4()} name={track.name} album={track.album} enhanced={track.enhanced} id={track.id}/>
                         })) : (<div> No tracks found</div>)
                 }
 
                 <Button
                     className="ml-5"
                     onClick={() => {
-                    setIndexStart((last) => last + 1)
+                    setIndexStart((last) => indexEnd - last >= 4 ? last + 1 : last)
                     setIndexEnd((last) => last !== tracksArray.length - 1 ? last + 1 : last)
                 }}>
                     <FontAwesomeIcon icon={faArrowRight} className="cursor-pointer"/>

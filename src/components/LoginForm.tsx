@@ -40,7 +40,7 @@ export default function LoginForm() {
                 rules={[{required: true, message: 'Please input your email!'}]}
             >
                 <Input onChange={(e) => setEmail(e.target.value)} placeholder="Email"
-                       prefix={<FontAwesomeIcon icon={faEnvelope}/>}/>
+                       prefix={<FontAwesomeIcon icon={faEnvelope}/>} />
             </Form.Item>
 
             <Form.Item
@@ -51,12 +51,8 @@ export default function LoginForm() {
                                 prefix={<FontAwesomeIcon icon={faLock}/>}/>
             </Form.Item>
 
-            <Form.Item name="remember" valuePropName="checked" wrapperCol={{span: 25}}>
-                <Checkbox className="text-slate-200">Remember me</Checkbox>
-            </Form.Item>
-
             <Form.Item wrapperCol={{span: 25}}>
-                <Button type="primary" htmlType="submit" onClick={login} className="bg-blue-200">
+                <Button type="primary" htmlType="submit" onClick={login}>
                     Login
                 </Button>
             </Form.Item>

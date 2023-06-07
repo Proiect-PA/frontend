@@ -9,6 +9,20 @@ import NotFound from "../pages/NotFound";
 import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 import Home from "../pages/Home";
+import SearchedLibrary from "../pages/SearchedLibrary";
+import {albumType, artistType, trackType} from "../utils/Types";
+import RandomPlaylist from "../pages/RandomPlaylist";
+
+
+export const searchedResults : (artistType | albumType | trackType)[] = []
+export function setSearchedResults (results : (artistType | albumType | trackType)[]) {
+    while(searchedResults.length > 0) {
+        searchedResults.pop()
+    }
+    results.forEach((result) => {
+        searchedResults.push(result)
+    })
+}
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +40,15 @@ export const router = createBrowserRouter([
     {
         path: "/profile",
         element: <Profile />
+    },
+
+    {
+        path: "/searched",
+        element: <SearchedLibrary searched={searchedResults}/>
+    },
+    {
+      path:"/random-playlist",
+      element: <RandomPlaylist />
     },
     {
         path: "/login",

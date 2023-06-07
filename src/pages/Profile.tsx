@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import {Button, Input, Layout} from "antd";
+import {Button, Input} from "antd";
 import {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPencilSquare, faCheckSquare, faStar} from "@fortawesome/free-solid-svg-icons";
@@ -8,12 +8,11 @@ import {host} from "../utils/URL";
 import {artistType, trackType, UserType, albumType, enhancedType} from "../utils/Types";
 import MusicLayout from "../components/MusicLayout";
 import {decoded} from "../App";
-import {colorBgCardTop, colorBgPrimary} from "../utils/Utils";
-
-const {Content} = Layout;
+import {colorBgCardTop} from "../utils/Utils";
+import userPfp from "../img/userPfp.png";
 
 export default function Profile() {
-    const [artists, setArtists] = useState<artistType[]>([])
+    const [artists, setArtists] = useState<(artistType & enhancedType)[]>([])
     const [tracks, setTracks] = useState<(enhancedType & trackType)[]>([])
     const [albums, setAlbums] = useState<(albumType & enhancedType)[]>([])
 
@@ -26,6 +25,7 @@ export default function Profile() {
             .then(res => res.data)
             .then((user: UserType) => {
                 setUser(user)
+                setUsername(user.username)
                 return user.id
             })
             .then((id) => {
@@ -57,6 +57,7 @@ export default function Profile() {
     }, [])
 
     const handleChangeUsername = () => {
+        console.log(`${host}/users/id=${user?.id}`)
         axios.patch(`${host}/users/id=${user?.id}`, {
             username
         })
@@ -66,7 +67,7 @@ export default function Profile() {
 
 
     const handleEnhanceTracks = () => {
-        axios.get(`http://localhost:8080/api/tracks-recommendations/${user?.id}`)
+        axios.get(`http://localhost:8080/api/user-custom-profile/tracks-recommendations/${user?.id}`)
             .then(res => res.data)
             .then((data: trackType[]) => {
                 const newData: (trackType & enhancedType)[] = data.map(val => {
@@ -89,7 +90,7 @@ export default function Profile() {
     }
 
     const handleEnhanceAlbums = () => {
-        axios.get(`http://localhost:8080/api/albums-recommendations/${user?.id}`)
+        axios.get(`http://localhost:8080/api/user-custom-profile/albums-recommendations/${user?.id}`)
             .then(res => res.data)
             .then((data: albumType[]) => {
                 const newData: (albumType & enhancedType)[] = data.map(val => {
@@ -103,7 +104,7 @@ export default function Profile() {
                 for (let i = 0; i < newData.length; i++) {
                     if (newAlbums.find(val => val.title === newData[i].title &&
                         val.artist === newData[i].artist &&
-                        val.genres === newData[i].genres) === undefined)
+                        val.genre === newData[i].genre) === undefined)
                         newAlbums.push(newData[i])
                 }
 
@@ -111,14 +112,36 @@ export default function Profile() {
             })
     }
 
+    const handleEnhanceArtists = () => {
+        axios.get(`http://localhost:8080/api/user-custom-profile/artists-recommendations/${user?.id}`)
+            .then(res => res.data)
+            .then((data: artistType[]) => {
+                const newData: (artistType & enhancedType)[] = data.map(val => {
+                    return {
+                        ...val,
+                        enhanced: true
+                    }
+                })
+
+                const newArtists = [...artists]
+                for (let i = 0; i < newData.length; i++) {
+                    if (newArtists.find(val => val.name === newData[i].name) === undefined)
+                        newArtists.push(newData[i])
+                }
+
+                setArtists(newArtists)
+            })
+
+    }
+
     return (
         <div className={`text-slate-200 min-h-screen`}>
             <Navbar/>
-            <div className={`bg-[${colorBgCardTop}] m-2 flex flex-row items-center p-5`}>
+            <div className={`bg-[${colorBgCardTop}] p-2 flex flex-row items-center w-full`}>
                 <img
-                    src="../../user.png"
+                    src={userPfp}
                     alt="User's profile picture"
-                    width={150}
+                    width={100}
                 />
                 <div className="flex flex-row items-center">
                     {
@@ -132,39 +155,36 @@ export default function Profile() {
                     }
                     <FontAwesomeIcon icon={editUsername ? faCheckSquare : faPencilSquare}
                                      onClick={() => {
-
                                          if (editUsername) {
                                              handleChangeUsername()
                                          }
-
                                          setEditUsername(!editUsername)
-
-                                     }
-                                     }
+                                     }}
                                      className="cursor-pointer ml-2"/>
 
-                    <div className="flex flex-col">
-                        <Button
-                            className={`bg-[${colorBgCardTop}] flex items-center justify-center px-20 py-5 m-5 text-md font-bold text-white`}
-                            onClick={handleEnhanceTracks}>
-                            <FontAwesomeIcon icon={faStar}/>
-                            Enhance Tracks
-                            <FontAwesomeIcon icon={faStar}/>
-                        </Button>
-                        <Button
-                            className={`bg-[${colorBgCardTop}] flex items-center justify-center px-40 py-5 m-5 text-md font-bold text-white`}
-                            onClick={handleEnhanceAlbums}>
-                            <FontAwesomeIcon icon={faStar}/>
-                            Enhance Albums
-                            <FontAwesomeIcon icon={faStar}/>
-                        </Button>
-                        <Button
-                            className={`bg-[${colorBgCardTop}] flex items-center justify-center px-40 py-5 m-5 text-md font-bold text-white`}>
-                            <FontAwesomeIcon icon={faStar}/>
-                            Enhance Artists
-                            <FontAwesomeIcon icon={faStar}/>
-                        </Button>
-                    </div>
+                </div>
+                <div className="flex flex-col ml-auto mr-10">
+                    <Button
+                        className={`bg-[${colorBgCardTop}] flex items-center justify-center px-5 py-3 m-2 text-sm font-bold text-white`}
+                        onClick={handleEnhanceTracks}>
+                        <FontAwesomeIcon icon={faStar}/>
+                        Enhance Tracks
+                        <FontAwesomeIcon icon={faStar}/>
+                    </Button>
+                    <Button
+                        className={`bg-[${colorBgCardTop}] flex items-center justify-center px-5 py-3 m-2 text-sm font-bold text-white`}
+                        onClick={handleEnhanceAlbums}>
+                        <FontAwesomeIcon icon={faStar}/>
+                        Enhance Albums
+                        <FontAwesomeIcon icon={faStar}/>
+                    </Button>
+                    <Button
+                        className={`bg-[${colorBgCardTop}] flex items-center justify-center px-5 py-3 m-2 text-sm font-bold text-white`}
+                        onClick={handleEnhanceArtists}>
+                        <FontAwesomeIcon icon={faStar}/>
+                        Enhance Artists
+                        <FontAwesomeIcon icon={faStar}/>
+                    </Button>
                 </div>
             </div>
             <MusicLayout artists={artists} albums={albums} tracks={tracks}/>

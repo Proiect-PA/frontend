@@ -36,6 +36,7 @@ export default function Home() {
                     </Button>
 
                     <Button type="primary" onClick={() => {
+                        navigate("/random-playlist")
                     }}
                             className={`bg-[${colorBgCardTop}] flex items-center justify-center px-40 py-5 m-5 text-lg font-bold text-white`}>
                         Random Playlist

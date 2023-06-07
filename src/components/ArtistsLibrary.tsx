@@ -1,4 +1,4 @@
-import {artistType} from "../utils/Types";
+import {artistType, enhancedType} from "../utils/Types";
 import {useState} from "react";
 import {Button} from "antd";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -9,7 +9,7 @@ import Artist from "./Artist";
 import {colorLayoutOnTop} from "../utils/Utils";
 
 
-export default function ArtistsLibrary({artists}: { artists: artistType[] }) {
+export default function ArtistsLibrary({artists}: { artists: (artistType & enhancedType)[] }) {
 
     const [indexStart, setIndexStart] = useState<number>(0)
     const [indexEnd, setIndexEnd] = useState<number>(4)
@@ -20,21 +20,21 @@ export default function ArtistsLibrary({artists}: { artists: artistType[] }) {
             <div className="flex flex-row items-center">
                 <Button onClick={() => {
                     setIndexStart((last) => last !== 0 ? last - 1 : last)
-                    setIndexEnd((last) => last !== 7 ? last - 1 : last)
+                    setIndexEnd((last) => last !== 4 ? last - 1 : last)
                 }}>
                     <FontAwesomeIcon icon={faArrowLeft} className="cursor-pointer"/>
                 </Button>
                 {
                     artists.length !== 0 ? (
                         artists.slice(indexStart, indexEnd).map((artist) => {
-                            return <Artist key={v4()} name={artist.name}/>
+                            return <Artist key={v4()} name={artist.name} enhanced={artist.enhanced} id={artist.id}/>
                         })) : (<div> No artists found</div>)
                 }
 
                 <Button
                     className="ml-5"
                     onClick={() => {
-                    setIndexStart((last) => last + 1)
+                    setIndexStart((last) => indexEnd - last >= 4 ? last + 1 : last)
                     setIndexEnd((last) => last !== artists.length - 1 ? last + 1 : last)
                 }}>
                     <FontAwesomeIcon icon={faArrowRight} className="cursor-pointer"/>
