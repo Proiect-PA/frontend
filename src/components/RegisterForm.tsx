@@ -25,9 +25,6 @@ export default function RegisterForm() {
             lastname,
             username
         }
-
-        console.log(userCredentials)
-
         axios
             .post("http://localhost:8080/api/auth/register",
                 userCredentials,
@@ -38,7 +35,6 @@ export default function RegisterForm() {
                 }
             )
             .then((res) => {
-                console.log(res)
             })
 
         navigator("/login")

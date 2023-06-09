@@ -5,7 +5,7 @@ import {Dropdown, MenuProps, Input, Button} from "antd";
 import {Link, useNavigate} from "react-router-dom";
 import {colorBgCardTop} from "../utils/Utils";
 import axios from "axios";
-import {setSearchedResults} from "../services/router";
+import {setSearchedResults} from "../pages/SearchedLibrary";
 import userPfp from "../img/userPfp.png"
 
 const items: MenuProps['items'] = [

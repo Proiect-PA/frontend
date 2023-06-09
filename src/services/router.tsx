@@ -1,4 +1,3 @@
-
 import {
     createBrowserRouter,
 } from "react-router-dom";
@@ -14,48 +13,47 @@ import {albumType, artistType, trackType} from "../utils/Types";
 import RandomPlaylist from "../pages/RandomPlaylist";
 
 
-export const searchedResults : (artistType | albumType | trackType)[] = []
-export function setSearchedResults (results : (artistType | albumType | trackType)[]) {
-    while(searchedResults.length > 0) {
-        searchedResults.pop()
-    }
-    results.forEach((result) => {
-        searchedResults.push(result)
-    })
-}
+export const searchedResults: (artistType | albumType | trackType)[] = []
+
+export const searchedResults2: (artistType | albumType | trackType)[] = []
 
 export const router = createBrowserRouter([
     {
-      path: "*",
-      element: <NotFound />
+        path: "*",
+        element: <NotFound/>
     },
     {
         path: "/trends",
-        element: <Trends />
+        element: <Trends/>
     },
     {
         path: "/",
-        element: <Home />
+        element: <Home/>
     },
     {
         path: "/profile",
-        element: <Profile />
+        element: <Profile/>
     },
 
     {
         path: "/searched",
         element: <SearchedLibrary searched={searchedResults}/>
     },
+
     {
-      path:"/random-playlist",
-      element: <RandomPlaylist />
+        path: "/searched-tracks",
+        element: <SearchedLibrary searched={searchedResults2}/>
+    },
+    {
+        path: "/random-playlist",
+        element: <RandomPlaylist/>
     },
     {
         path: "/login",
-        element: <Login />
+        element: <Login/>
     },
     {
         path: "/register",
-        element: <Register />
+        element: <Register/>
     }
 ]);

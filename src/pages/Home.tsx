@@ -24,7 +24,7 @@ export default function Home() {
     return (
         <>
             <Navbar/>
-            <div className="flex flex-row items-center justify-center">
+            <div className="flex flex-row items-center justify-center sm:flex-col">
                 <div className="flex flex-col">
                     <Button type="primary" onClick={handleTrendsClick}
                             className={`bg-[${colorBgCardTop}] flex items-center justify-center px-40 py-5 m-5 text-lg font-bold text-white`}>

@@ -7,7 +7,6 @@ import axios from "axios"
 import {host} from "../utils/URL";
 import {artistType, trackType, UserType, albumType, enhancedType} from "../utils/Types";
 import MusicLayout from "../components/MusicLayout";
-import {decoded} from "../App";
 import {colorBgCardTop} from "../utils/Utils";
 import userPfp from "../img/userPfp.png";
 
@@ -21,7 +20,7 @@ export default function Profile() {
     const [user, setUser] = useState<UserType>()
 
     useEffect(() => {
-        axios.get(`${host}/users/email=${decoded.sub}`)
+        axios.get(`${host}/users/email=${localStorage.getItem("email")}`)
             .then(res => res.data)
             .then((user: UserType) => {
                 setUser(user)

@@ -19,9 +19,12 @@ export default function LoginForm() {
             password
         }
 
+        localStorage.clear()
         axios
             .post("http://localhost:8080/api/auth/login", userCredentials)
-            .then((res) => console.log(res))
+            .then((res) => {
+                localStorage.setItem("email", res.data)
+            })
 
         // console.log(userCredentials)
         navigator("/")
@@ -40,7 +43,7 @@ export default function LoginForm() {
                 rules={[{required: true, message: 'Please input your email!'}]}
             >
                 <Input onChange={(e) => setEmail(e.target.value)} placeholder="Email"
-                       prefix={<FontAwesomeIcon icon={faEnvelope}/>} />
+                       prefix={<FontAwesomeIcon icon={faEnvelope}/>}/>
             </Form.Item>
 
             <Form.Item
@@ -57,7 +60,9 @@ export default function LoginForm() {
                 </Button>
             </Form.Item>
             <Form.Item wrapperCol={{span: 25}}>
-                <p className="text-slate-200">Don't have an account? <Link to="/register" className="hover:font-bold"> Sign Up </Link></p>
+                <p className="text-slate-200">Don't have an account? <Link to="/register"
+                                                                           className="hover:font-bold"> Sign Up </Link>
+                </p>
             </Form.Item>
         </Form>
     )

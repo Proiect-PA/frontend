@@ -3,13 +3,32 @@ import Navbar from "../components/Navbar";
 import Album from "../components/Album";
 import Track from "../components/Track";
 import Artist from "../components/Artist";
+import {searchedResults, searchedResults2} from "../services/router";
+
+export function setSearchedResults (results : (artistType | albumType | trackType)[]) {
+    while(searchedResults.length > 0) {
+        searchedResults.pop()
+    }
+    results.forEach((result) => {
+        searchedResults.push(result)
+    })
+}
+
+export function setSearchedResults2 (results : (artistType | albumType | trackType)[]) {
+    while(searchedResults2.length > 0) {
+        searchedResults2.pop()
+    }
+    results.forEach((result) => {
+        searchedResults2.push(result)
+    })
+}
 
 export default function SearchedLibrary({searched}: { searched: (artistType | albumType | trackType)[] }) {
 
     return (
         <div>
             <Navbar/>
-            <div className="flex flex-col font-bold">
+            <div className="flex flex-row flex-wrap font-bold">
                 {
                     searched.length !== 0 ?
                     searched.map((item: any) => {
